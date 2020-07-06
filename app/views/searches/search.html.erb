@@ -1,0 +1,10 @@
+<h2>Results index</h2>
+<% if @range == '2' %>
+
+  <%= render 'books/index', books: @book %>
+
+<% elsif @range == '1' %>
+
+  <%= render 'users/index', users: @user %>
+
+<% end %>
