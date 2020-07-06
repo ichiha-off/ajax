@@ -1,0 +1,2 @@
+$('#book_comments_area').html("<%= j(render 'book_comments_area', comments: @comment.book.book_comments) %>");
+$('#book_comment_counts').html("<%= j(render 'counts', { comments: @comment.book.book_comments }) %>");

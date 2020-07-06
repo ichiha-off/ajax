@@ -1,0 +1,27 @@
+<% unless comments.blank? %>	
+	<div class="comment-list bt style-2" id="comments">
+		<div class="float-wrapper">
+			<h2 class="comment-count"><%= comments.count %>件コメント</h2>
+		</div>
+	</div>
+	<table class="table" >
+		<% comments.each do |book_comment| %>
+			<tr id="destroy_comment_<%= book_comment.id %>">
+				<td><%= attachment_image_tag(book_comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></td>
+				<td>
+					<a href="#" class="link-author"><%= book_comment.user.name %></a></td>
+				<td>
+					<%= book_comment.comment %>
+				</td>
+				<td>
+					<%= book_comment.created_at.strftime('%Y/%m/%d') %>
+				</td>
+				<% if book_comment.user == current_user %>
+					<td>
+						<%= link_to "delete", book_book_comment_path(book_comment.book, book_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+					</td>
+				<% end %>
+			</tr>
+		<% end %>
+	</table>
+<% end %>
